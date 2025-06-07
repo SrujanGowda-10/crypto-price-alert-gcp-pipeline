@@ -1,6 +1,5 @@
 from airflow import DAG
 from airflow.providers.google.cloud.operators.functions import CloudFunctionInvokeFunctionOperator
-# from airflow.providers.google.cloud.operators.dataform import DataformRunWorkflowInvocationOperator
 from airflow.providers.google.cloud.operators.dataform import (
     DataformCreateCompilationResultOperator,
     DataformCreateWorkflowInvocationOperator
