@@ -1,0 +1,28 @@
+config {
+  type: 'table',
+  schema: 'my_dataset',
+  name: 'crypto_threshold_violations'
+}
+
+
+-- Get the latest threshold violations for crypto coin
+WITH latest_price as (
+  SELECT coin , price_in_usd,updated_at,
+  ROW_NUMBER() OVER(PARTITION BY coin ORDER BY updated_at DESC) AS rnk
+  from ${ref('crypto_coin_final')}
+)
+
+SELECT
+t.user_id,
+t.email,
+t.coin,
+t.threshold,
+p.price_in_usd as alerted_price,
+t.direction,
+CURRENT_DATETIME() as alert_time
+from ${ref('user_thresholds')} t
+join latest_price p
+on p.coin = t.coin
+where p.rnk=1 and (
+  (t.direction ='above'and p.price_in_usd > t.threshold) or (t.direction='below' and p.price_in_usd < t.threshold)
+)

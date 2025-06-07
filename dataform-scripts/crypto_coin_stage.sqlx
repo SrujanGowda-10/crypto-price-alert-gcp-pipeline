@@ -1,0 +1,5 @@
+config {
+    type:'declaration',
+    schema: 'my_dataset',
+    name:'crypto_coin_stage'
+}
