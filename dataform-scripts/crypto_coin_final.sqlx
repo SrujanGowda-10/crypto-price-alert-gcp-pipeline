@@ -1,0 +1,11 @@
+config {
+    type:'table',
+    schema: 'my_dataset',
+    name: 'crypto_coin_final'
+}
+
+SELECT 
+JSON_EXTRACT_SCALAR(data, '$.coin') as coin,
+CAST(JSON_EXTRACT_SCALAR(data, '$.price_in_usd') AS FLOAT64) as price_in_usd,
+CAST(JSON_EXTRACT_SCALAR(data, '$.updated_at') AS DATETIME) as updated_at
+ FROM ${ref('crypto_coin_stage')}
