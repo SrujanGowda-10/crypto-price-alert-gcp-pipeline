@@ -1,17 +1,17 @@
-# 🚀 Crypto Coin Price Alert System (GCP + Dataform + Airflow)
+# Crypto Coin Price Alert System (GCP + Dataform + Airflow)
 
 A real-time data engineering project that alerts users via email when their selected cryptocurrency (Bitcoin, Ethereum, Solana) crosses a price threshold.
 
 ---
 
-## 📌 Architecture Overview
+## Architecture Overview
 
 ![image](https://github.com/user-attachments/assets/07907b6a-33b1-48b2-bfce-6083d8e1decf)
 
 
 ---
 
-## 🧩 Tech Stack
+## Tech Stack
 
 - **Cloud Functions**: Two separate functions for data ingestion and alerting
 - **Pub/Sub**: Used for ingesting real-time API data
@@ -22,7 +22,7 @@ A real-time data engineering project that alerts users via email when their sele
 
 ---
 
-## 🔁 Flow Summary
+## Flow Summary
 
 1. **Ingestion Function (`fetch_and_publish_price.py`)**  
    Fetches crypto prices from CoinGecko API for predefined coins, and publishes messages to a Pub/Sub topic.
